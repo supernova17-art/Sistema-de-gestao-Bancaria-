@@ -1,0 +1,16 @@
+@startuml
+actor Operador
+boundary "Página Operações" as UI
+control "BankService" as Service
+database "SQLite" as DB
+Operador -> UI : submete operação
+UI -> Service : valida e executa
+Service -> DB : inicia transação
+Service -> DB : atualiza saldo(s)
+Service -> DB : regista operação
+Service -> DB : cria alerta se limiar atingido
+Service -> DB : confirma transação
+DB --> Service : resultado
+Service --> UI : sucesso ou erro
+UI --> Operador : mensagem e saldo
+@enduml

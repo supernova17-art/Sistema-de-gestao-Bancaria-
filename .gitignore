@@ -1,0 +1,6 @@
+/storage/*.sqlite
+/storage/*.sqlite-shm
+/storage/*.sqlite-wal
+/vendor/
+.idea/
+.vscode/

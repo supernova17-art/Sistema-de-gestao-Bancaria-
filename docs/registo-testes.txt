@@ -1,0 +1,35 @@
+Registo de testes — 2026-10-29
+Ambiente: Windows 11; PHP 8.5.12 CLI; extensões PDO_SQLITE e SQLite3 carregadas por parâmetros -d.
+Execução: php tests/run.php
+
+PASSOU: cliente válido fica registado
+PASSOU: e-mail de cliente repetido é rejeitado
+PASSOU: funcionário válido fica registado
+PASSOU: contas ficam associadas a clientes existentes
+PASSOU: conta sem cliente existente é rejeitada
+PASSOU: depósito aumenta o saldo
+PASSOU: transferência debita a origem
+PASSOU: transferência credita o destino
+PASSOU: saldo insuficiente é rejeitado
+PASSOU: saldo não muda quando o levantamento é rejeitado
+PASSOU: transferência para a própria conta é rejeitada
+PASSOU: operação acima do limiar gera alerta
+PASSOU: alerta pode ser marcado como revisto
+PASSOU: empréstimo aprovado credita a conta
+PASSOU: pedido decidido não pode ser decidido novamente
+PASSOU: cartão pode ser bloqueado
+PASSOU: conta de outro cliente não pode receber o pedido
+PASSOU: painel agrega clientes e contas
+
+Resultado: 18 passou; 0 falhou.
+
+Validação de sintaxe PHP:
+No syntax errors detected in app/BankService.php
+No syntax errors detected in app/Database.php
+No syntax errors detected in app/helpers.php
+No syntax errors detected in public/index.php
+No syntax errors detected in tests/run.php
+
+Verificação HTTP observada: GET /?page=operations HTTP 200; titular fictício apresentado.
+POST de levantamento acima do saldo HTTP 200; mensagem de rejeição: “Saldo insuficiente”.
+Roteiro manual completo (T20–T28): Não executado.

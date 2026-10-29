@@ -1,0 +1,20 @@
+@startuml
+skinparam componentStyle rectangle
+actor "Operador / Gestor" as User
+node "Navegador" {
+  component "HTML + CSS + JavaScript" as UI
+}
+node "Aplicação PHP" {
+  component "public/index.php" as Page
+  component "BankService" as Service
+  component "helpers.php" as Helpers
+  component "Database.php" as Persistence
+}
+database "SQLite\nstorage/banco.sqlite" as DB
+User --> UI
+UI --> Page : HTTP GET / POST + CSRF
+Page --> Service : ações e validação
+Page --> Helpers : escape e mensagens
+Service --> Persistence : PDO
+Persistence --> DB : SQL parametrizado
+@enduml

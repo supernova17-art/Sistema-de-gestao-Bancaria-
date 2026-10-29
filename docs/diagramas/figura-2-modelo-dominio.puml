@@ -1,0 +1,17 @@
+@startuml
+class Cliente
+class Conta
+class Operacao
+class Cartao
+class Emprestimo
+class Funcionario
+class Alerta
+Cliente "1" -- "0..*" Conta : possui
+Conta "1" -- "0..*" Cartao : suporta
+Conta "1" -- "0..*" Operacao : origem/destino
+Cliente "1" -- "0..*" Emprestimo : solicita
+Conta "1" -- "0..*" Emprestimo : recebe crédito
+Funcionario "0..1" -- "0..*" Operacao : regista
+Funcionario "0..1" -- "0..*" Emprestimo : decide
+Operacao "1" -- "0..1" Alerta : origina
+@enduml

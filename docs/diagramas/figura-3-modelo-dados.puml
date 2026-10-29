@@ -1,0 +1,68 @@
+@startuml
+entity customers {
+  * id : INTEGER <<PK>>
+  --
+  full_name : TEXT
+  email : TEXT <<UNIQUE>>
+  phone : TEXT
+}
+entity accounts {
+  * id : INTEGER <<PK>>
+  --
+  customer_id : INTEGER <<FK>>
+  account_number : TEXT <<UNIQUE>>
+  account_type : TEXT
+  balance_cents : INTEGER
+  status : TEXT
+}
+entity employees {
+  * id : INTEGER <<PK>>
+  --
+  full_name : TEXT
+  role : TEXT
+  email : TEXT <<UNIQUE>>
+}
+entity transactions {
+  * id : INTEGER <<PK>>
+  --
+  from_account_id : INTEGER <<FK>>
+  to_account_id : INTEGER <<FK>>
+  employee_id : INTEGER <<FK>>
+  operation_type : TEXT
+  amount_cents : INTEGER
+  created_at : TEXT
+}
+entity cards {
+  * id : INTEGER <<PK>>
+  --
+  account_id : INTEGER <<FK>>
+  card_number : TEXT <<UNIQUE>>
+  status : TEXT
+}
+entity loans {
+  * id : INTEGER <<PK>>
+  --
+  customer_id : INTEGER <<FK>>
+  account_id : INTEGER <<FK>>
+  employee_id : INTEGER <<FK>>
+  amount_cents : INTEGER
+  term_months : INTEGER
+  status : TEXT
+}
+entity fraud_alerts {
+  * id : INTEGER <<PK>>
+  --
+  transaction_id : INTEGER <<FK>>
+  reason : TEXT
+  status : TEXT
+}
+customers ||--o{ accounts
+accounts ||--o{ transactions : origem
+accounts |o--o{ transactions : destino
+accounts ||--o{ cards
+customers ||--o{ loans
+accounts ||--o{ loans
+employees |o--o{ transactions
+employees |o--o{ loans
+transactions ||--o| fraud_alerts
+@enduml

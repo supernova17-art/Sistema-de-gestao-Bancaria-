@@ -1,0 +1,28 @@
+@startuml
+left to right direction
+actor "Operador" as Operador
+actor "Gestor" as Gestor
+rectangle "Sistema de Gestão Bancária" {
+  usecase "Registar cliente" as UC01
+  usecase "Abrir conta" as UC02
+  usecase "Registar operação" as UC03
+  usecase "Emitir cartão" as UC04
+  usecase "Bloquear cartão" as UC05
+  usecase "Registar empréstimo" as UC06
+  usecase "Decidir empréstimo" as UC07
+  usecase "Registar funcionário" as UC08
+  usecase "Consultar painel" as UC09
+  usecase "Rever alerta" as UC10
+}
+Operador --> UC01
+Operador --> UC02
+Operador --> UC03
+Operador --> UC04
+Operador --> UC05
+Operador --> UC06
+Operador --> UC09
+Operador --> UC10
+Gestor --> UC07
+Gestor --> UC08
+Gestor --> UC09
+@enduml
